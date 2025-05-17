@@ -1,0 +1,660 @@
+说明：Epic games安装的游戏以及相关的记录路径：
+
+在游戏目录下都有一个名为《.egstore》的文件夹
+
+其中有《.mancpn》和《.manifest》两个不同后缀的文件，两个文件的文件名都是相同的字符串，代表了游戏的ID
+
+此ID则与《C:\ProgramData\Epic\EpicGamesLauncher\Data\Manifests》目录下的《.item》一一对应
+
+每安装一个游戏，此处则应该包含一个《.item》文件
+
+《.item》文件可以文本形式打开，其中记录有游戏的安装信息，格式为：
+{
+	"FormatVersion": 0,
+	"bIsIncompleteInstall": false,
+	"LaunchCommand": "",
+	"LaunchExecutable": "MovingOut.exe",
+	"ManifestLocation": "E:\\GAME\\EPIC\\MovingOut/.egstore",
+	……(此处为省略)
+	"DisplayName": "Moving Out",
+	"InstallationGuid": "06CB9020464B048975A7698E941F202D",
+	"InstallLocation": "E:\\GAME\\EPIC\\MovingOut",
+	……(此处为省略)	
+	"StagingLocation": "E:\\GAME\\EPIC\\MovingOut/.egstore/bps",
+	……(此处为省略)
+}
+其中值《ManifestLocation》、《StagingLocation》与《InstallLocation》值均与游戏的安装位置有关
+
+此外，在目录《C:\ProgramData\Epic\UnrealEngineLauncher》中有一个《LauncherInstalled.dat》文件
+同样可以文本形式打开，其中同样记录了每个游戏的安装信息，格式为：
+
+{
+	"InstallationList": [
+		{
+			"InstallLocation": "E:\\GAME\\EPIC\\MovingOut",
+			"NamespaceId": "f919a1262081444fb28f0fdef68d6b14",
+			"ItemId": "ad66ba38abed4035917aab1b1a3a3607",
+			"ArtifactId": "8e29583ae4b44a21883038668f7e301e",
+			"AppVersion": "11",
+			"AppName": "8e29583ae4b44a21883038668f7e301e"
+		},
+		{
+			"InstallLocation": "F:\\GAME\\EPIC\\ShadowTactics",
+			"NamespaceId": "2f215955790d456b80c291bc2feaf7f7",
+			"ItemId": "c275c2a3a6564d298db3dd4ca623e1f9",
+			"ArtifactId": "Fangtooth",
+			"AppVersion": "2.2.11.F.Windows_EpicStore.2023_01_17_1555_Windows",
+			"AppName": "Fangtooth"
+		}
+	]
+}
+
+要迁移游戏，将游戏目录整个复制到想要迁移的目录
+此处以《MovingOut》举例
+
+打开《C:\ProgramData\Epic\EpicGamesLauncher\Data\Manifests》目录，逐个查看《.item》文件，确认游戏《MovingOut》所处位置，找到后格式如下：
+"ManifestLocation": "E:\\GAME\\EPIC\\MovingOut/.egstore",
+"InstallLocation": "E:\\GAME\\EPIC\\MovingOut",
+"StagingLocation": "E:\\GAME\\EPIC\\MovingOut/.egstore/bps",
+备注：《E:\\GAME\\EPIC\\MovingOut/.egstore》在资源管理器中代表：《E:\GAME\EPIC\MovingOut\.egstore》
+按照格式修改目录为迁移目标
+随后打开《C:\ProgramData\Epic\UnrealEngineLauncher》目录，打开《LauncherInstalled.dat》文件
+修改其中的：《InstallLocation》后的目录为迁移目标
+最后重启EPIC客户端
+
+示例文件：
+06CB9020464B048975A7698E941F202D.item：
+{
+	"FormatVersion": 0,
+	"bIsIncompleteInstall": false,
+	"LaunchCommand": "",
+	"LaunchExecutable": "MovingOut.exe",
+	"ManifestLocation": "E:\\GAME\\EPIC\\MovingOut/.egstore",
+	"ManifestHash": "83b23856d43faa3ee19e0a0572809b7ee14f3d5f",
+	"bIsApplication": true,
+	"bIsExecutable": true,
+	"bIsManaged": false,
+	"bNeedsValidation": false,
+	"bRequiresAuth": true,
+	"bAllowMultipleInstances": false,
+	"bCanRunOffline": true,
+	"bAllowUriCmdArgs": false,
+	"bLaunchElevated": false,
+	"BaseURLs": [
+		"http://epicgames-download1-1251447533.file.myqcloud.com/Builds/Org/o-uvtztrtfjdn3xgrwyhbuwwb5z42mbv/575ef79db8ea4c2184d745b09b8518d8/default",
+		"http://epicgames-download1.akamaized.net/Builds/Org/o-uvtztrtfjdn3xgrwyhbuwwb5z42mbv/575ef79db8ea4c2184d745b09b8518d8/default",
+		"http://download.epicgames.com/Builds/Org/o-uvtztrtfjdn3xgrwyhbuwwb5z42mbv/575ef79db8ea4c2184d745b09b8518d8/default"
+	],
+	"BuildLabel": "Live",
+	"AppCategories": [
+		"games",
+		"applications"
+	],
+	"ChunkDbs": [],
+	"CompatibleApps": [],
+	"DisplayName": "Moving Out",
+	"InstallationGuid": "06CB9020464B048975A7698E941F202D",
+	"InstallLocation": "E:\\GAME\\EPIC\\MovingOut",
+	"InstallSessionId": "8D8006F147F7089611B32FAC26429831",
+	"InstallTags": [],
+	"InstallComponents": [],
+	"HostInstallationGuid": "00000000000000000000000000000000",
+	"PrereqIds": [],
+	"PrereqSHA1Hash": "",
+	"LastPrereqSucceededSHA1Hash": "",
+	"StagingLocation": "E:\\GAME\\EPIC\\MovingOut/.egstore/bps",
+	"TechnicalType": "games,applications",
+	"VaultThumbnailUrl": "",
+	"VaultTitleText": "",
+	"InstallSize": 774686051,
+	"MainWindowProcessName": "",
+	"ProcessNames": [],
+	"BackgroundProcessNames": [],
+	"IgnoredProcessNames": [],
+	"DlcProcessNames": [],
+	"MandatoryAppFolderName": "MovingOut",
+	"OwnershipToken": "false",
+	"SidecarConfigRevision": 0,
+	"CatalogNamespace": "f919a1262081444fb28f0fdef68d6b14",
+	"CatalogItemId": "ad66ba38abed4035917aab1b1a3a3607",
+	"AppName": "8e29583ae4b44a21883038668f7e301e",
+	"AppVersionString": "11",
+	"MainGameCatalogNamespace": "f919a1262081444fb28f0fdef68d6b14",
+	"MainGameCatalogItemId": "ad66ba38abed4035917aab1b1a3a3607",
+	"MainGameAppName": "8e29583ae4b44a21883038668f7e301e",
+	"AllowedUriEnvVars": []
+}
+
+
+LauncherInstalled.dat：
+{
+	"InstallationList": [
+		{
+			"InstallLocation": "E:\\GAME\\EPIC\\MovingOut",
+			"NamespaceId": "f919a1262081444fb28f0fdef68d6b14",
+			"ItemId": "ad66ba38abed4035917aab1b1a3a3607",
+			"ArtifactId": "8e29583ae4b44a21883038668f7e301e",
+			"AppVersion": "11",
+			"AppName": "8e29583ae4b44a21883038668f7e301e"
+		},
+		{
+			"InstallLocation": "F:\\GAME\\EPIC\\ShadowTactics",
+			"NamespaceId": "2f215955790d456b80c291bc2feaf7f7",
+			"ItemId": "c275c2a3a6564d298db3dd4ca623e1f9",
+			"ArtifactId": "Fangtooth",
+			"AppVersion": "2.2.11.F.Windows_EpicStore.2023_01_17_1555_Windows",
+			"AppName": "Fangtooth"
+		},
+		{
+			"InstallLocation": "F:\\GAME\\EPIC\\ShadowTacticsAikosChoice",
+			"NamespaceId": "39c6dd5409944922a04cac3f59fbbcd4",
+			"ItemId": "1589ce110ea941948380ea6bf73ef749",
+			"ArtifactId": "a334978574a840d594c31521592925f3",
+			"AppVersion": "3.2.25.F.r4769a",
+			"AppName": "a334978574a840d594c31521592925f3"
+		},
+		{
+			"InstallLocation": "D:\\EPIC/SniperGhostWarriorCo0uGt6",
+			"NamespaceId": "3196925cb7ea45c3a9c47118e52a820e",
+			"ItemId": "f554c33320e4489880f9c640f487395f",
+			"ArtifactId": "f8b6cc851ab34f5f9f07654426dc2429",
+			"AppVersion": "Win-1.1.3",
+			"AppName": "f8b6cc851ab34f5f9f07654426dc2429"
+		}
+	]
+}
+
+根据说明，结合示例文件，以及下方我提到的内容帮助我写一个有简单的用户界面的管理EPIC游戏的PY脚本，请确保脚本能正常运行，不要出现类似点击后cmd窗口闪现，然后没有任何反应或是弹出程序启动失败:'EpicGamesManagerGul' obiect has no attribute
+'progress_var等情况，注意所有的路径方面的问题，必须严格，
+另外我还附上了《说明.txt》中提到的《LauncherInstalled.dat》文件与《xxx.item》文件，受限于上传文件格式，我将这两个文件都加上了《.txt》后缀
+请一次给出所有代码，并给出代码应该存放的文件名
+
+功能：
+列出所有已安装的 Epic Games 游戏与信息(保证游戏名称是正确的)
+提供游戏迁移功能
+迁移时手动选择是否在迁移后删除原始目录
+添加游戏卸载功能
+支持备份和恢复游戏配置
+以及所有操作自动更新与备份相关配置文件(.item 文件和 LauncherInstalled.dat)，备份目录为脚本运行的目录
+更新配置文件的目的是维持游戏列表清洁，以及方便手动查找整理等
+另外关于备份功能：
+记住，备份与还原游戏的功能要确保游戏路径不会出现问题,比如在恢复游戏时选择了另外的目录而不是最初备份的那个目录，则需要同步修改配置文件
+备份时可以选择是否压缩，选择不压缩则直接开始打包(此处的不压缩是指压缩等级为0，也就是仅存储文件)，选择压缩则开始选择压缩级别
+备份包括将游戏文件打包，同时将目录 C:\ProgramData\Epic\EpicGamesLauncher\Data\Manifests 下与游戏关联的item文件同时打包，记住，要保留文件名，以便还原时让EPIC客户端能检测到
+
+将C:\ProgramData\Epic\UnrealEngineLauncher目录下的LauncherInstalled.dat文件内，与游戏有关的代码块复制出来，单独存放
+(可以通过搜索游戏名来定位哪个代码块是与当前备份游戏相关的，这很简单，游戏的路径最后一个就是游戏名，例如MovingOut，在LauncherInstalled.dat文件里的路径是E:/GAME/EPIC\\MovingOut，路径最后的MovingOut就是文件名，当然，可能有的游戏会有空格之类的，请考虑这种情况，MovingOut的在LauncherInstalled.dat文件内的代码块为：
+		{
+			"InstallLocation": "E:/GAME/EPIC\\MovingOut",
+			"NamespaceId": "f919a1262081444fb28f0fdef68d6b14",
+			"ItemId": "ad66ba38abed4035917aab1b1a3a3607",
+			"ArtifactId": "8e29583ae4b44a21883038668f7e301e",
+			"AppVersion": "11",
+			"AppName": "8e29583ae4b44a21883038668f7e301e"
+		}
+		
+只需要将这一段备份，在还原时直接添加到LauncherInstalled.dat文件的末尾即可，
+比如当前的LauncherInstalled.dat文件是这样的：
+{
+	"InstallationList": [
+		{
+			"InstallLocation": "D:\\EPIC/SniperGhostWarriorCo0uGt6",
+			"NamespaceId": "3196925cb7ea45c3a9c47118e52a820e",
+			"ItemId": "f554c33320e4489880f9c640f487395f",
+			"ArtifactId": "f8b6cc851ab34f5f9f07654426dc2429",
+			"AppVersion": "Win-1.1.3",
+			"AppName": "f8b6cc851ab34f5f9f07654426dc2429"
+		}
+	]
+}
+
+那么还原后：
+{
+	"InstallationList": [
+		{
+			"InstallLocation": "D:\\EPIC/SniperGhostWarriorCo0uGt6",
+			"NamespaceId": "3196925cb7ea45c3a9c47118e52a820e",
+			"ItemId": "f554c33320e4489880f9c640f487395f",
+			"ArtifactId": "f8b6cc851ab34f5f9f07654426dc2429",
+			"AppVersion": "Win-1.1.3",
+			"AppName": "f8b6cc851ab34f5f9f07654426dc2429"
+		},
+		{
+			"InstallLocation": "E:/GAME/EPIC\\MovingOut",
+			"NamespaceId": "f919a1262081444fb28f0fdef68d6b14",
+			"ItemId": "ad66ba38abed4035917aab1b1a3a3607",
+			"ArtifactId": "8e29583ae4b44a21883038668f7e301e",
+			"AppVersion": "11",
+			"AppName": "8e29583ae4b44a21883038668f7e301e"
+		}
+	]
+}
+即在[]内部的代码末尾的{}后加一个英文逗号，然后换行添加
+当然，如果你有更好的方法请使用更好的，这只是我根据我已有的知识想出的最好方法，我不知道是否还有更好的，我希望有，并且你能用)
+
+备份完成后将在指定目录打包一个压缩文件，之后在还原备份时将同时释放三种文件，第一是释放游戏文件到选定目录，剩下的两种则都是固定目录
+
+另外
+我必须向你解释，EPIC在安装游戏时会让玩家选择安装目录，例如我在安装 MovingOut 时选择的是 
+G:\GAME\EPIC 那么在安装后游戏目录则是 G:\GAME\EPIC\MovingOut ，也就是说，在选择的路径下，会创建一个文件夹来容纳游戏内容，这一点在 xxxx.item 文件与 LauncherInstalled.dat 文件中同游有体现
+不要出现，迁移时缺少一个文件夹来容纳他们，直接将应用复制到我选择的目录中，我不知道你能否理解我的意思，总之，迁移时需要带上外层的文件夹，例如我在迁移 G:\GAME\EPIC\MovingOut 时，迁移到F盘后的目录应该也是F:\GAME\EPIC\MovingOut (F:\GAME\EPIC 是我选定的目录，选定目录后将游戏文件夹整个复制过来)
+而且在迁移时不要直接清空选择目录中的所有文件，而是先检查该目录是否有其他文件夹及文件，如果检测到，则提醒用户并打开该目录
+
+另外我这里还有一个脚本给你参考(注意，这个脚本无法正确运行，会出现运行无反应的情况)，你可以模仿这个脚本的用户界面：
+import os
+import json
+import shutil
+import tkinter as tk
+from tkinter import ttk, filedialog, messagebox, simpledialog
+import zipfile
+import threading
+import time
+import sys
+
+class EpicGamesManager:
+    def __init__(self):
+        # 默认路径
+        self.manifests_dir = os.path.join(os.getenv('ProgramData'), 'Epic', 'EpicGamesLauncher', 'Data', 'Manifests')
+        self.launcher_installed_path = os.path.join(os.getenv('ProgramData'), 'Epic', 'UnrealEngineLauncher', 'LauncherInstalled.dat')
+        
+        # 验证路径是否存在
+        if not os.path.exists(self.manifests_dir):
+            raise FileNotFoundError(f"Manifests目录不存在: {self.manifests_dir}")
+        
+        if not os.path.exists(self.launcher_installed_path):
+            raise FileNotFoundError(f"LauncherInstalled.dat文件不存在: {self.launcher_installed_path}")
+        
+        # 加载游戏数据
+        self.games = self.load_games_data()
+    
+    def load_games_data(self):
+        """加载所有游戏数据，并过滤掉本地不存在的游戏"""
+        games = []
+        
+        # 从LauncherInstalled.dat加载基本信息
+        with open(self.launcher_installed_path, 'r', encoding='utf-8') as f:
+            launcher_data = json.load(f)
+        
+        # 从.item文件加载详细信息
+        for item_file in os.listdir(self.manifests_dir):
+            if item_file.endswith('.item'):
+                item_path = os.path.join(self.manifests_dir, item_file)
+                try:
+                    with open(item_path, 'r', encoding='utf-8') as f:
+                        item_data = json.load(f)
+                    
+                    # 检查游戏安装目录是否存在
+                    install_location = item_data.get('InstallLocation', '')
+                    if not os.path.exists(install_location):
+                        # 删除不存在的游戏的item文件
+                        try:
+                            os.remove(item_path)
+                            print(f"已删除不存在的游戏配置文件: {item_file}")
+                        except Exception as e:
+                            print(f"删除配置文件失败: {item_file} - {str(e)}")
+                        continue  # 跳过本地不存在的游戏
+                    
+                    # 匹配LauncherInstalled.dat中的游戏
+                    for game in launcher_data['InstallationList']:
+                        if (item_data.get('CatalogNamespace') == game['NamespaceId'] and 
+                            item_data.get('CatalogItemId') == game['ItemId'] and
+                            item_data.get('AppName') == game['AppName']):
+                            
+                            # 合并游戏信息
+                            merged_game = {
+                                'display_name': item_data.get('DisplayName', game['AppName']),
+                                'install_location': install_location,
+                                'manifest_location': item_data['ManifestLocation'],
+                                'staging_location': item_data['StagingLocation'],
+                                'item_file': item_file,
+                                'namespace_id': game['NamespaceId'],
+                                'item_id': game['ItemId'],
+                                'app_name': game['AppName'],
+                                'app_version': game['AppVersion'],
+                                'artifact_id': game['ArtifactId']
+                            }
+                            games.append(merged_game)
+                            break
+                except Exception as e:
+                    print(f"加载{item_file}失败: {str(e)}")
+                    continue
+        
+        return games
+    
+    def migrate_game(self, game_info, new_parent_dir, delete_original=False):
+        """
+        迁移游戏到新位置
+        :param game_info: 游戏信息字典
+        :param new_parent_dir: 新的父目录 (如 F:\GAME\EPIC)
+        :param delete_original: 是否删除原始文件
+        :return: (成功状态, 消息)
+        """
+        old_location = game_info['install_location']
+        game_folder_name = os.path.basename(old_location)
+        new_location = os.path.join(new_parent_dir, game_folder_name)
+        
+        # 1. 检查目标目录是否存在其他游戏
+        if os.path.exists(new_parent_dir):
+            dir_contents = os.listdir(new_parent_dir)
+            if dir_contents and not all(x == game_folder_name for x in dir_contents):
+                if not messagebox.askyesno("警告", 
+                    f"目标目录 {new_parent_dir} 包含其他游戏/文件。\n"
+                    "继续操作可能会影响其他游戏。\n"
+                    "确定要继续吗？"):
+                    return False, "迁移已取消"
+        
+        # 2. 创建父目录
+        os.makedirs(new_parent_dir, exist_ok=True)
+        
+        # 3. 复制游戏文件到新位置
+        try:
+            if os.path.exists(new_location):
+                shutil.rmtree(new_location)
+            shutil.copytree(old_location, new_location)
+        except Exception as e:
+            return False, f"复制游戏文件失败: {str(e)}"
+        
+        # 4. 更新.item文件
+        item_path = os.path.join(self.manifests_dir, game_info['item_file'])
+        try:
+            with open(item_path, 'r', encoding='utf-8') as f:
+                item_data = json.load(f)
+            
+            # 更新路径
+            item_data['InstallLocation'] = new_location
+            item_data['ManifestLocation'] = os.path.join(new_location, '.egstore').replace('\\', '/')
+            item_data['StagingLocation'] = os.path.join(new_location, '.egstore/bps').replace('\\', '/')
+            
+            with open(item_path, 'w', encoding='utf-8') as f:
+                json.dump(item_data, f, indent=4)
+        except Exception as e:
+            return False, f"更新.item文件失败: {str(e)}"
+        
+        # 5. 更新LauncherInstalled.dat
+        try:
+            with open(self.launcher_installed_path, 'r', encoding='utf-8') as f:
+                launcher_data = json.load(f)
+            
+            for game in launcher_data['InstallationList']:
+                if (game['NamespaceId'] == game_info['namespace_id'] and 
+                    game['ItemId'] == game_info['item_id'] and
+                    game['AppName'] == game_info['app_name']):
+                    game['InstallLocation'] = new_location
+                    break
+            
+            with open(self.launcher_installed_path, 'w', encoding='utf-8') as f:
+                json.dump(launcher_data, f, indent=4)
+        except Exception as e:
+            return False, f"更新LauncherInstalled.dat失败: {str(e)}"
+        
+        # 6. 可选: 删除原始文件
+        if delete_original:
+            try:
+                shutil.rmtree(old_location)
+                return True, f"游戏迁移成功并已删除原始文件! 请重启Epic客户端使更改生效。"
+            except Exception as e:
+                return True, f"游戏迁移成功，但删除原始文件失败: {str(e)}。请手动删除 {old_location}"
+        
+        return True, "游戏迁移成功! 请重启Epic客户端使更改生效。原始文件保留在: " + old_location
+    
+    def backup_game(self, game_info, backup_dir, compress_level=None):
+        """
+        改进版备份功能
+        :param game_info: 游戏信息字典
+        :param backup_dir: 备份目录
+        :param compress_level: 压缩级别(0-9)，None表示不压缩
+        :return: (成功状态, 消息)
+        """
+        try:
+            # 准备备份信息
+            game_name = game_info['display_name']
+            game_location = game_info['install_location']
+            timestamp = time.strftime("%Y%m%d_%H%M%S")
+            backup_name = f"{game_name}_{timestamp}"
+            
+            # 创建备份元数据
+            backup_meta = {
+                'game_name': game_name,
+                'backup_time': timestamp,
+                'original_paths': {
+                    'game_location': game_location,
+                    'item_file': os.path.join(self.manifests_dir, game_info['item_file']),
+                    'launcher_file': self.launcher_installed_path
+                },
+                'game_info': game_info
+            }
+            
+            # 获取游戏在LauncherInstalled.dat中的条目
+            with open(self.launcher_installed_path, 'r', encoding='utf-8') as f:
+                launcher_data = json.load(f)
+            
+            game_entry = None
+            for entry in launcher_data['InstallationList']:
+                if (entry['NamespaceId'] == game_info['namespace_id'] and 
+                    entry['ItemId'] == game_info['item_id'] and
+                    entry['AppName'] == game_info['app_name']):
+                    game_entry = entry
+                    break
+            
+            if not game_entry:
+                return False, "在LauncherInstalled.dat中找不到游戏条目"
+            
+            if compress_level is not None:
+                # 压缩备份模式
+                backup_path = os.path.join(backup_dir, f"{backup_name}.zip")
+                
+                with zipfile.ZipFile(backup_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+                    # 1. 备份游戏文件
+                    for root, dirs, files in os.walk(game_location):
+                        for file in files:
+                            file_path = os.path.join(root, file)
+                            arcname = os.path.join('game', os.path.relpath(file_path, game_location))
+                            zipf.write(file_path, arcname, compresslevel=compress_level)
+                    
+                    # 2. 备份配置文件
+                    # 2.1 备份.item文件
+                    item_file_path = os.path.join(self.manifests_dir, game_info['item_file'])
+                    if os.path.exists(item_file_path):
+                        zipf.write(item_file_path, 'config/item_file.item')
+                    
+                    # 2.2 备份游戏条目
+                    zipf.writestr('config/game_entry.json', json.dumps(game_entry, indent=4))
+                    
+                    # 3. 保存备份元数据
+                    zipf.writestr('backup_meta.json', json.dumps(backup_meta, indent=4))
+                
+                return True, f"压缩备份成功: {backup_path}"
+            else:
+                # 非压缩备份模式
+                backup_path = os.path.join(backup_dir, backup_name)
+                os.makedirs(backup_path, exist_ok=True)
+                
+                # 1. 备份游戏文件
+                game_backup_dir = os.path.join(backup_path, 'game')
+                shutil.copytree(game_location, game_backup_dir)
+                
+                # 2. 备份配置文件
+                config_backup_dir = os.path.join(backup_path, 'config')
+                os.makedirs(config_backup_dir, exist_ok=True)
+                
+                # 2.1 备份.item文件
+                item_file_path = os.path.join(self.manifests_dir, game_info['item_file'])
+                if os.path.exists(item_file_path):
+                    shutil.copy2(item_file_path, os.path.join(config_backup_dir, 'item_file.item'))
+                
+                # 2.2 备份游戏条目
+                with open(os.path.join(config_backup_dir, 'game_entry.json'), 'w', encoding='utf-8') as f:
+                    json.dump(game_entry, f, indent=4)
+                
+                # 3. 保存备份元数据
+                with open(os.path.join(backup_path, 'backup_meta.json'), 'w', encoding='utf-8') as f:
+                    json.dump(backup_meta, f, indent=4)
+                
+                return True, f"非压缩备份成功: {backup_path}"
+                
+        except Exception as e:
+            return False, f"备份失败: {str(e)}"
+    
+    def restore_game(self, backup_path, restore_location=None):
+        """
+        改进版恢复功能
+        :param backup_path: 备份文件(.zip)或目录路径
+        :param restore_location: 游戏恢复位置(None表示让用户选择)
+        :return: (成功状态, 消息)
+        """
+        try:
+            # 读取备份元数据
+            backup_meta = self._read_backup_meta(backup_path)
+            if not backup_meta:
+                return False, "无效的备份：缺少元数据文件"
+            
+            game_info = backup_meta['game_info']
+            original_paths = backup_meta['original_paths']
+            game_name = game_info['display_name']
+            
+            # 1. 选择恢复位置
+            if not restore_location:
+                suggested_location = os.path.dirname(original_paths['game_location'])
+                restore_location = filedialog.askdirectory(
+                    title=f"选择{game_name}的恢复位置",
+                    initialdir=suggested_location)
+                if not restore_location:
+                    return False, "恢复已取消"
+            
+            # 2. 准备恢复路径
+            game_folder_name = os.path.basename(original_paths['game_location'])
+            full_restore_path = os.path.join(restore_location, game_folder_name)
+            
+            if backup_path.endswith('.zip'):
+                # ZIP恢复模式
+                with zipfile.ZipFile(backup_path, 'r') as zipf:
+                    # 创建临时目录
+                    temp_dir = os.path.join(os.getenv('TEMP'), f"epic_restore_{time.strftime('%Y%m%d%H%M%S')}")
+                    os.makedirs(temp_dir, exist_ok=True)
+                    
+                    try:
+                        # 2.1 解压游戏文件
+                        zipf.extractall(temp_dir)
+                        
+                        # 移动游戏文件到目标位置
+                        extracted_game_path = os.path.join(temp_dir, 'game')
+                        if os.path.exists(extracted_game_path):
+                            if os.path.exists(full_restore_path):
+                                shutil.rmtree(full_restore_path)
+                            shutil.move(extracted_game_path, full_restore_path)
+                        
+                        # 3. 恢复配置文件
+                        # 3.1 恢复.item文件
+                        item_temp_path = os.path.join(temp_dir, 'config', 'item_file.item')
+                        if os.path.exists(item_temp_path):
+                            os.makedirs(self.manifests_dir, exist_ok=True)
+                            shutil.copy2(item_temp_path, original_paths['item_file'])
+                        
+                        # 3.2 恢复游戏条目
+                        entry_temp_path = os.path.join(temp_dir, 'config', 'game_entry.json')
+                        if os.path.exists(entry_temp_path):
+                            with open(entry_temp_path, 'r', encoding='utf-8') as f:
+                                game_entry = json.load(f)
+                            
+                            # 更新安装路径
+                            game_entry['InstallLocation'] = full_restore_path.replace('\\', '/')
+                            
+                            # 加载当前LauncherInstalled.dat
+                            if os.path.exists(self.launcher_installed_path):
+                                with open(self.launcher_installed_path, 'r', encoding='utf-8') as f:
+                                    launcher_data = json.load(f)
+                            else:
+                                launcher_data = {'InstallationList': []}
+                            
+                            # 检查是否已存在相同游戏
+                            exists = any(
+                                entry['NamespaceId'] == game_entry['NamespaceId'] and
+                                entry['ItemId'] == game_entry['ItemId'] and
+                                entry['AppName'] == game_entry['AppName']
+                                for entry in launcher_data['InstallationList']
+                            )
+                            
+                            if not exists:
+                                # 添加到列表末尾
+                                launcher_data['InstallationList'].append(game_entry)
+                                
+                                # 保存更新
+                                os.makedirs(os.path.dirname(self.launcher_installed_path), exist_ok=True)
+                                with open(self.launcher_installed_path, 'w', encoding='utf-8') as f:
+                                    json.dump(launcher_data, f, indent=4)
+                    finally:
+                        # 清理临时目录
+                        shutil.rmtree(temp_dir, ignore_errors=True)
+            else:
+                # 目录恢复模式
+                # 1. 恢复游戏文件
+                src_game_path = os.path.join(backup_path, 'game')
+                if os.path.exists(src_game_path):
+                    if os.path.exists(full_restore_path):
+                        shutil.rmtree(full_restore_path)
+                    shutil.copytree(src_game_path, full_restore_path)
+                
+                # 2. 恢复配置文件
+                config_dir = os.path.join(backup_path, 'config')
+                if os.path.exists(config_dir):
+                    # 2.1 恢复.item文件
+                    src_item_path = os.path.join(config_dir, 'item_file.item')
+                    if os.path.exists(src_item_path):
+                        os.makedirs(self.manifests_dir, exist_ok=True)
+                        shutil.copy2(src_item_path, original_paths['item_file'])
+                    
+                    # 2.2 恢复游戏条目
+                    src_entry_path = os.path.join(config_dir, 'game_entry.json')
+                    if os.path.exists(src_entry_path):
+                        with open(src_entry_path, 'r', encoding='utf-8') as f:
+                            game_entry = json.load(f)
+                        
+                        # 更新安装路径
+                        game_entry['InstallLocation'] = full_restore_path.replace('\\', '/')
+                        
+                        # 加载当前LauncherInstalled.dat
+                        if os.path.exists(self.launcher_installed_path):
+                            with open(self.launcher_installed_path, 'r', encoding='utf-8') as f:
+                                launcher_data = json.load(f)
+                        else:
+                            launcher_data = {'InstallationList': []}
+                        
+                        # 检查是否已存在相同游戏
+                        exists = any(
+                            entry['NamespaceId'] == game_entry['NamespaceId'] and
+                            entry['ItemId'] == game_entry['ItemId'] and
+                            entry['AppName'] == game_entry['AppName']
+                            for entry in launcher_data['InstallationList']
+                        )
+                        
+                        if not exists:
+                            # 添加到列表末尾
+                            launcher_data['InstallationList'].append(game_entry)
+                            
+                            # 保存更新
+                            os.makedirs(os.path.dirname(self.launcher_installed_path), exist_ok=True)
+                            with open(self.launcher_installed_path, 'w', encoding='utf-8') as f:
+                                json.dump(launcher_data, f, indent=4)
+            
+            return True, f"游戏恢复成功到: {full_restore_path}"
+        except Exception as e:
+            return False, f"恢复失败: {str(e)}"
+    
+    def _read_backup_meta(self, backup_path):
+        """读取备份元数据"""
+        try:
+            if backup_path.endswith('.zip'):
+                with zipfile.ZipFile(backup_path, 'r') as zipf:
+                    if 'backup_meta.json' in zipf.namelist():
+                        with zipf.open('backup_meta.json') as f:
+                            return json.load(f)
+            else:
+                meta_path = os.path.join(backup_path, 'backup_meta.json')
+                if os.path.exists(meta_path):
+                    with open(meta_path, 'r', encoding='utf-8') as f:
+                        return json.load(f)
+            return None
+        except:
+            return None
+
+# [保留原有的EpicGamesManagerGUI类和main函数不变]

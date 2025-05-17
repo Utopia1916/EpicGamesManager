@@ -1,6 +1,6 @@
-# Epic Games Manager
+# Epic Games Manager(E宝游戏管理器)
 ## Only Chinese, No other localizations yet
-Epic Games Manager(E宝游戏管理器)
+### 警告，完全由AI DeepSeek编写
 脚本运行目录备份的是每次执行功能前的配置文件，至于配置文件是什么请往下看，一般来说用不上，如果出现意外情况导致EPIC上显示游戏未安装再往下读
 目前没有进度条显示，后续可能会添加吧
 我暂时没发现问题，如有问题请报告，如有想要的功能也请报告

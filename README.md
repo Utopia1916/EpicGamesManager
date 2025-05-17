@@ -26,18 +26,18 @@ Epic games安装的游戏以及相关的记录说明：
 《.item》文件可以文本形式打开，其中记录有游戏的安装信息，格式为：
 
 {
-	"FormatVersion": 0,
-	"bIsIncompleteInstall": false,
-	"LaunchCommand": "",
-	"LaunchExecutable": "MovingOut.exe",
-	"ManifestLocation": "E:\\GAME\\EPIC\\MovingOut/.egstore",
-	……(此处为省略)
-	"DisplayName": "Moving Out",
-	"InstallationGuid": "06CB9020464B048975A7698E941F202D",
-	"InstallLocation": "E:\\GAME\\EPIC\\MovingOut",
+	"FormatVersion": 0,	
+	"bIsIncompleteInstall": false,	
+	"LaunchCommand": "",	
+	"LaunchExecutable": "MovingOut.exe",	
+	"ManifestLocation": "E:\\GAME\\EPIC\\MovingOut/.egstore",	
 	……(此处为省略)	
-	"StagingLocation": "E:\\GAME\\EPIC\\MovingOut/.egstore/bps",
-	……(此处为省略)
+	"DisplayName": "Moving Out",	
+	"InstallationGuid": "06CB9020464B048975A7698E941F202D",	
+	"InstallLocation": "E:\\GAME\\EPIC\\MovingOut",	
+	……(此处为省略)		
+	"StagingLocation": "E:\\GAME\\EPIC\\MovingOut/.egstore/bps",	
+	……(此处为省略)	
 }
 
 其中值《ManifestLocation》、《StagingLocation》与《InstallLocation》值均与游戏的安装位置有关
